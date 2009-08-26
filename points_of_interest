@@ -1,0 +1,8 @@
+-- how often are superclassed fields part of data structures?
+-- how often is whitelist heuristic useful? (4 cases)
+-- how many instances of graph/collection in compound data structures?
+-- how many instances of array based data structures implemented.
+-- effect of looking in instantiations instead of fields for implementation use.
+-- bad field names
+-- inaccuracies in classifiers
+-- use of 'target' blacklist

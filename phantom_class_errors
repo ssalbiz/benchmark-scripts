@@ -1,0 +1,45 @@
+--aoi -- dependency requires outof service microsoft jvm jars -- works with patched soot
+columba -- solved phantom class issues, fails with Exception soot.AbstractSootMethodRef$ClassResolutionFailedException: Class antlr.collections.AST -- fixed after removing groovy.jar from classpath. attempt to run with patched soot 
+--drjava -- unresolved references to internal packaged classes -- works with patched soot
+galleon -- unresolvable class conflicts -- requires proprietary apple jars -- OOM w.  1800m -- OOM w. prop apple jars. Suggests that problem does not lie in phantom ref handling. -- runs with patched soot
+ireport -- requires JAR files from macromedia, unavailable as of 19/05/2009 -- OOM  w 1800m
+--jeppers -- fails with exception -- runs correctly on packaged classes
+jasper -- eigenbase-utils not found -- OOM w. 1600m
+--scala -- unresolved phantom references to internal classes -- works with patched soot
+
+argoUML -- OOM
+derby -- throws exception, insertion point chain
+geronimo -- throws exception --- patched soot
+hibernate -- throws exception ---
+jedit -- throws exception, no insertion point in chain. recompiling ineffective
+--lucene -- null pointer exception -- fixed by recompiling with ibm-jdk
+ireport -- exception 
+
+
+galleon_new:
+
+Exception in thread "main" java.lang.RuntimeException: Trying to create interface invoke expression for non-interface type. Use JVirtualInvokeExpr or JSpecialInvokeExpr instead!
+at soot.jimple.internal.JInterfaceInvokeExpr.<init>(JInterfaceInvokeExpr.java:46)
+at soot.jimple.Jimple.newInterfaceInvokeExpr(Jimple.java:467)
+at soot.coffi.CFG.generateJimple(CFG.java:4562)
+at soot.coffi.CFG.jimplify(CFG.java:1259)
+at soot.coffi.CFG.jimplify(CFG.java:947)
+at soot.coffi.CoffiMethodSource.getBody(CoffiMethodSource.java:100)
+at soot.SootMethod.getBodyFromMethodSource(SootMethod.java:82)
+at soot.SootMethod.retrieveActiveBody(SootMethod.java:329)
+at soot.jimple.toolkits.callgraph.OnFlyCallGraphBuilder.processNewMethod(OnFlyCallGraphBuilder.java:181)
+at soot.jimple.toolkits.callgraph.OnFlyCallGraphBuilder.processReachables(OnFlyCallGraphBuilder.java:81)
+at soot.jimple.spark.solver.OnFlyCallGraph.build(OnFlyCallGraph.java:55)
+at soot.jimple.spark.solver.PropWorklist.handleVarNode(PropWorklist.java:123)
+at soot.jimple.spark.solver.PropWorklist.propagate(PropWorklist.java:53)
+at soot.jimple.spark.SparkTransformer.internalTransform(SparkTransformer.java:151)
+at soot.SceneTransformer.transform(SceneTransformer.java:39)
+at soot.Transform.apply(Transform.java:89)
+at soot.RadioScenePack.internalApply(RadioScenePack.java:57)
+at soot.jimple.toolkits.callgraph.CallGraphPack.internalApply(CallGraphPack.java:47)
+at soot.Pack.apply(Pack.java:114)
+at soot.PackManager.runWholeProgramPacks(PackManager.java:408)
+at soot.PackManager.runPacks(PackManager.java:329)
+at soot.Main.run(Main.java:202)
+at soot.Main.main(Main.java:145)
+at MyMain.main(MyMain.java:163)

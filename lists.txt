@@ -1,0 +1,23 @@
++-------------------------------------------------------------------+------------------+-----------+
+| classname                                                         | type 	       | pkgname   |
++-------------------------------------------------------------------+------------------+-----------+
+| EDU.purdue.cs.bloat.cfg.FlowGraph$10                              | java.lang.Object | bloat     | 
+| EDU.purdue.cs.bloat.cfg.FlowGraph$8                               | java.lang.Object | bloat     | 
+| EDU.purdue.cs.bloat.tree.Tree$1                                   | java.lang.Object | bloat     | 
+| EDU.purdue.cs.bloat.tree.Tree$2                                   | java.lang.Object | bloat     | 
+| EDU.purdue.cs.bloat.util.Graph$3                                  | java.lang.Object | bloat     | 
+| org.hibernate.action.EntityUpdateAction                           | java.lang.Object | hibernate | 
+| org.hibernate.impl.IteratorImpl                                   | java.lang.Object | hibernate | 
+| org.openscience.cdk.qsar.descriptors.atomic.BondsToAtomDescriptor | java.lang.Object | jchem     | 
+| com.mxgraph.model.mxGraphModel$mxChildChange                      | java.lang.Object | jgraph    | 
+| com.mxgraph.model.mxGraphModel$mxRootChange                       | java.lang.Object | jgraph    | 
+| com.mxgraph.model.mxGraphModel$mxTerminalChange                   | java.lang.Object | jgraph    | 
+| com.mxgraph.model.mxGraphModel$mxValueChange                      | java.lang.Object | jgraph    | 
+| com.mxgraph.view.mxGraphView$mxCurrentRootChange                  | java.lang.Object | jgraph    | 
+| sandmark.program.util.AllMethods                                  | java.lang.Object | sandmark  | 
+| sandmark.util.newgraph.codec.CycleAndPathWrapper$CycleState       | java.lang.Object | sandmark  | 
+| sandmark.util.PriorityQueue$Ascending                             | java.lang.Object | sandmark  | 
+| sandmark.util.PriorityQueue$Descending                            | java.lang.Object | sandmark  | 
+| scala.collection.mutable.DefaultEntry                             | java.lang.Object | scala     | 
++-------------------------------------------------------------------+------------------+-----------+
+

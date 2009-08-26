@@ -1,0 +1,6 @@
+java -Xmx1800M -cp . org.gudy.azureus2.ui.swt.Main
+The java class is not found:  org.gudy.azureus2.ui.swt.Main
+java -Xmx1800M -cp . org.gudy.azureus2.ui.swt.Main
+The java class is not found:  org.gudy.azureus2.ui.swt.Main
+java -Xmx1800M -cp . org.gudy.azureus2.ui.swt.Main
+The java class is not found:  org.gudy.azureus2.ui.swt.Main

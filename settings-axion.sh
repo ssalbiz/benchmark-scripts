@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_ROOT=$BENCHMARKS_ROOT/axion/axion
+export EXTRA=${PROJECT_ROOT}/lib/commons-codec.jar:${PROJECT_ROOT}/lib/commons-collections.jar:${PROJECT_ROOT}/lib/commons-primitives.jar:${PROJECT_ROOT}/lib/commons-logging.jar:${PROJECT_ROOT}/lib/javacc/jar
+export MAIN_CLASS=( org.axiondb.tools.Console org.axiondb.jdbc.TestAll org.axiondb.jdbc.TestAxionDataSource org.axiondb.jdbc.TestAxionResultSet_Disk org.axiondb.jdbc.TestAxionResultSet org.axiondb.jdbc.TestAxionResultSet_DelimitedFlatfile org.axiondb.jdbc.TestAxionDriver org.axiondb.util.TestIntBTree org.axiondb.util.TestAll org.axiondb.util.TestObjectBTree org.axiondb.parser.TestAll org.axiondb.engine.rows.TestAll org.axiondb.engine.tables.TestAll org.axiondb.engine.TestAll org.axiondb.engine.TestMemoryDatabase org.axiondb.engine.visitors.TestAll org.axiondb.engine.rowiterators.TestAll org.axiondb.engine.TestDiskDatabase org.axiondb.engine.indexes.TestIntBTreeIndex org.axiondb.engine.indexes.TestAll org.axiondb.engine.indexes.TestObjectArrayIndex org.axiondb.engine.indexes.TestObjectBTreeIndex org.axiondb.engine.indexes.TestIntArrayIndex org.axiondb.engine.commands.TestCreateSequenceCommand org.axiondb.engine.commands.TestCreateIndexCommand org.axiondb.engine.commands.TestDatabaseLinkCommand org.axiondb.engine.commands.TestAll org.axiondb.engine.commands.TestInsertCommand org.axiondb.engine.commands.TestAddConstraintCommand org.axiondb.engine.commands.TestCreateTableCommand org.axiondb.engine.commands.TestSelectCommand org.axiondb.engine.commands.TestAxionQueryPlanner org.axiondb.engine.TestDiskDatabases org.axiondb.types.TestCompressedFileClob org.axiondb.types.TestFileClob org.axiondb.types.TestFileBlob org.axiondb.types.TestAll org.axiondb.types.TestBLOBType org.axiondb.types.TestStringClob org.axiondb.types.TestCLOBType org.axiondb.types.TestCompressedFileBlob org.axiondb.TestAll org.axiondb.profile.BlobInserts org.axiondb.profile.ExternalTableInsertSelect org.axiondb.profile.DatabaseStartup org.axiondb.profile.MultiColumnPrimaryKeyInserts org.axiondb.functions.TestAll org.axiondb.functions.TestMatchesFunction org.axiondb.functions.TestLikeToRegexpFunction org.axiondb.TestAxionWithIndex org.axiondb.TestFunctional org.axiondb.tools.TestConsole org.axiondb.tools.TestAll org.axiondb.TestSequence org.axiondb.functional.TestAll org.axiondb.functional.TestInsertIntoSeveralLargeIndices org.axiondb.util.StringIdentifierGenerator org.axiondb.tools.Defrag )
+
+export PACKAGE=( org.axiondb )
+export CLASSES_DIR=$PROJECT_ROOT/bin/classes
+if [ "$ANALYSIS" == "ds-finder" ]; then
+  export SOOT_OPTIONS="org/axiondb/"
+elif [ "$ANALYSIS" == "alias" ]; then
+  export SOOT_OPTIONS="-w -p wjtp enabled:true"
+fi
