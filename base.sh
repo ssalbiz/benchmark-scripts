@@ -1,7 +1,7 @@
 #/bin/bash
 
-export BENCHMARKS_ROOT=${HOME}/dev
-export SCRIPTS=${BENCHMARKS_ROOT}/benchmark_hacks/
+export BENCHMARKS_ROOT=${HOME}/benchmark_sources
+export SCRIPTS=${BENCHMARKS_ROOT}/scripts
 export SOOT_HOME=${BENCHMARKS_ROOT}/soot/
 export SOOT_CLASSPATH=$SOOT_HOME/soot-2.3.0/lib/sootclasses-2.3.0.jar:$SOOT_HOME/jasmin-2.3.0/classes:${SOOT_HOME}/soot-2.3.0/lib/polyglotclasses.jar
 
@@ -26,16 +26,16 @@ else
 fi
 
 if [ "$ANALYSIS" == "alias" ]; then
-  if [ -e ${SWD}/classlist-${PROJECT_NAME}.sh ]; then
-    export CLASS_LIST=`${SWD}/classlist-${PROJECT_NAME}.sh`
+  if [ -e ${SCRIPTS}/classlist-${PROJECT_NAME}.sh ]; then
+    export CLASS_LIST=`${SCRIPTS}/classlist-${PROJECT_NAME}.sh`
     echo "Using custom class list"
   else 
-    export CLASS_LIST=`${SWD}/generate_class_list.sh`
+    export CLASS_LIST=`${SCRIPTS}/generate_class_list.sh`
   fi
 fi
 
-export OUTPUT_DIR=${BENCHMARKS_ROOT}/sootOutput/${PROJECT_NAME}
-export OUTPUT_FILE=${BENCHMARKS_ROOT}/sootOutput/logs/${PROJECT_NAME}.${ANALYSIS}.log
+export OUTPUT_DIR=${BENCHMARKS_ROOT}/Output/
+export OUTPUT_FILE=${BENCHMARKS_ROOT}/Output/logs/${PROJECT_NAME}.${ANALYSIS}.log
 
 if [ ! -d $OUTPUT_DIR ]; then
    echo "making directory: $OUTPUT_DIR."
@@ -59,7 +59,7 @@ elif [ "$ANALYSIS" == "ds-finder" ]; then
   export TRANSFORMS=${BENCHMARKS_ROOT}/ds-finder/classes/
   export SOOT_MAIN=ca.patricklam.DSFinder
   export DS_CLASSES=/usr/share/asm-3/lib/asm.jar:/usr/share/asm-3/lib/asm-commons.jar:/usr/share/asm-3/lib/asm-tree.jar:$BENCHMARKS_ROOT/ds-finder/lib/jargs.jar
-  export CLASSPATH=$SOOT_CLASSPATH:$JAVA_CLASSPATH:$TRANSFORMS:$CLASSES_DIR:${DS_CLASSES}:$EXTRA
+  export CLASSPATH=$JAVA_CLASSPATH:$TRANSFORMS:$CLASSES_DIR:${DS_CLASSES}:$EXTRA
   unset INCL_LIST
   for (( i = 0; i < ${#PACKAGE[@]}; i++ )); do
     TMP=`echo ${PACKAGE[$i]} | sed 's/\./\//g'`
