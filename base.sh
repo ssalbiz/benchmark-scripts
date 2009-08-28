@@ -1,16 +1,17 @@
 #/bin/bash
 
-export BENCHMARKS_ROOT=${HOME}/benchmark_sources
+export BENCHMARKS_ROOT=/xtra/benchmark_sources
 export SCRIPTS=${BENCHMARKS_ROOT}/scripts
 export SOOT_HOME=${BENCHMARKS_ROOT}/soot/
 export SOOT_CLASSPATH=$SOOT_HOME/soot-2.3.0/lib/sootclasses-2.3.0.jar:$SOOT_HOME/jasmin-2.3.0/classes:${SOOT_HOME}/soot-2.3.0/lib/polyglotclasses.jar
+export DS_CLASSES=/usr/share/java/asm3.jar:/usr/share/java/asm3-commons.jar:/usr/share/java/asm3-tree.jar:${BENCHMARKS_ROOT}/scripts/jargs.jar
 
-export JAVA_HOME=/home/albiz/.gentoo/java-config-2/current-user-vm
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 if [ ! -e ${JAVA_HOME}/jre/lib/rt.jar ]; then
 	 export JAVA_HOME=/opt/sun-jdk-1.5.0.18/
 fi
 
-export JAVA_CLASSPATH=/usr/share/javacup/lib/javacup.jar:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/jre/lib/jce.jar:/usr/share/junit/lib/junit.jar:${JAVA_HOME}/jre/lib/jsse.jar:${JAVA_HOME}/lib/tools.jar:/opt/sun-jdk-1.4.2.19/lib/tools.jar
+export JAVA_CLASSPATH=${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/jre/lib/jce.jar:${JAVA_HOME}/jre/lib/jsse.jar:${JAVA_HOME}/lib/tools.jar
 
 
 
@@ -56,9 +57,8 @@ if [ "$ANALYSIS" == "alias" ]; then
   export MAIN_OPT="-main-class" #used be soot to denote main class. Unnecessary for ds-finder
   #export OUTPUT_OPT="| tee -a ${OUTPUT_FILE}"
 elif [ "$ANALYSIS" == "ds-finder" ]; then
-  export TRANSFORMS=${BENCHMARKS_ROOT}/ds-finder/classes/
+  export TRANSFORMS=${BENCHMARKS_ROOT}/scripts/DSFinder-20090828.jar
   export SOOT_MAIN=ca.patricklam.DSFinder
-  export DS_CLASSES=/usr/share/asm-3/lib/asm.jar:/usr/share/asm-3/lib/asm-commons.jar:/usr/share/asm-3/lib/asm-tree.jar:$BENCHMARKS_ROOT/ds-finder/lib/jargs.jar
   export CLASSPATH=$JAVA_CLASSPATH:$TRANSFORMS:$CLASSES_DIR:${DS_CLASSES}:$EXTRA
   unset INCL_LIST
   for (( i = 0; i < ${#PACKAGE[@]}; i++ )); do
