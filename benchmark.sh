@@ -25,7 +25,7 @@ fi
 shift
 shift
 
-echo "LOOKING IN ${CLASSES_DIR}"
+echo "ANALYZING ${CLASSES_DIR}"
 
 if [ ! -n "$MAIN_CLASS" ]; then
    ## if no main class is set use whichever one soot infers
